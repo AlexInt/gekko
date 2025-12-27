@@ -68,6 +68,28 @@ class MarketService:
             
         return self.exchanges[exchange_id]
 
+    async def get_historical_candles(self, exchange: str, symbol: str, timeframe: str, start_time: datetime, end_time: datetime) -> pd.DataFrame:
+        """Fetch historical candles from database as DataFrame"""
+        if not self.db:
+            raise ValueError("Database session not initialized")
+
+        stmt = select(Candle).where(
+            Candle.exchange == exchange,
+            Candle.symbol == symbol,
+            Candle.timeframe == timeframe,
+            Candle.timestamp >= start_time,
+            Candle.timestamp <= end_time
+        ).order_by(Candle.timestamp.asc())
+        
+        result = await self.db.execute(stmt)
+        candles = result.scalars().all()
+        
+        if not candles:
+            return pd.DataFrame()
+            
+        data = [c.to_dict() for c in candles]
+        return pd.DataFrame(data)
+
     async def fetch_ohlcv(
         self, 
         exchange_id: str, 

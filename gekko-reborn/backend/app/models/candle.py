@@ -1,8 +1,6 @@
 from sqlalchemy import Column, Integer, String, Float, DateTime, UniqueConstraint
-from sqlalchemy.ext.declarative import declarative_base
+from app.core.database import Base
 from datetime import datetime
-
-Base = declarative_base()
 
 class Candle(Base):
     __tablename__ = "candles"

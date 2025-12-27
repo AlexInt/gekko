@@ -15,6 +15,45 @@ Gekko Reborn 是经典 Gekko 量化交易机器人的现代化重构版本（AI 
 - **Machine Learning**: PyTorch, Scikit-learn
 - **Testing**: Pytest, Pytest-Asyncio
 
+## AI 模块功能
+
+Phase 4 引入了 AI 模块，支持以下功能：
+
+1. **数据准备**: 自动从数据库提取 K 线数据并计算技术指标（TA-Lib）。
+2. **模型训练**: 提供 REST API 接口启动 LSTM 模型训练。
+3. **模型管理**: 记录模型元数据和性能指标，统一管理模型版本。
+4. **策略集成**: 训练好的模型可直接在 `AIStrategy` 中加载，用于生成交易信号。
+
+### 训练模型示例
+
+发送 POST 请求到 `/ai/train`:
+
+```json
+{
+  "name": "BTC-1H-LSTM-V1",
+  "exchange": "binance",
+  "symbol": "BTC/USDT",
+  "timeframe": "1h",
+  "start_date": "2023-01-01T00:00:00",
+  "end_date": "2023-12-31T23:59:59",
+  "model_type": "LSTM",
+  "feature_config": [
+    { "name": "RSI", "params": { "timeperiod": 14 } },
+    {
+      "name": "MACD",
+      "params": { "fastperiod": 12, "slowperiod": 26, "signalperiod": 9 }
+    }
+  ],
+  "model_config": {
+    "seq_length": 60,
+    "epochs": 10,
+    "batch_size": 32,
+    "hidden_size": 64,
+    "num_layers": 2
+  }
+}
+```
+
 ## 部署与运行
 
 ### 前置要求
@@ -76,6 +115,7 @@ backend/
 │   ├── services/       # 业务逻辑 (MarketService, etc.)
 │   ├── strategy/       # 策略引擎 (BaseStrategy, Indicators)
 │   ├── backtest/       # 回测引擎 (BacktestEngine)
+│   ├── ai/             # AI 模块 (训练, 特征工程, 模型)
 │   └── main.py         # 入口文件
 ├── tests/              # 测试用例
 ├── pyproject.toml      # 依赖管理

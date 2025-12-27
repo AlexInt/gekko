@@ -4,6 +4,7 @@ from contextlib import asynccontextmanager
 from app.core.database import engine
 from app.models.candle import Base
 from app.core.scheduler import start_scheduler, scheduler
+from app.routers import ai
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -48,3 +49,5 @@ async def root():
 @app.get("/health")
 async def health_check():
     return {"status": "ok"}
+
+app.include_router(ai.router)
