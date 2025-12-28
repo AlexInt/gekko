@@ -24,6 +24,7 @@ export default function TrainModelConfig({
   loading,
 }: TrainConfigProps) {
   const t = useTranslations("AI");
+  const tCommon = useTranslations("Common");
 
   // Config State
   const [name, setName] = useState("");
@@ -73,16 +74,14 @@ export default function TrainModelConfig({
           <BrainCircuit className="h-5 w-5 text-orange-400" />
           {t("trainNew")}
         </CardTitle>
-        <CardDescription>
-          Configure dataset and hyperparameters for training
-        </CardDescription>
+        <CardDescription>{t("configureTraining")}</CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Basic Info */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
             <label className="text-sm font-medium text-slate-300">
-              Model Name
+              {t("modelName")}
             </label>
             <Input
               value={name}
@@ -93,7 +92,7 @@ export default function TrainModelConfig({
           </div>
           <div className="space-y-2">
             <label className="text-sm font-medium text-slate-300">
-              Model Architecture
+              {t("architecture")}
             </label>
             <select
               className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
@@ -111,7 +110,7 @@ export default function TrainModelConfig({
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="space-y-2">
             <label className="text-sm font-medium text-slate-300">
-              Exchange
+              {tCommon("exchange")}
             </label>
             <select
               className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
@@ -123,7 +122,9 @@ export default function TrainModelConfig({
             </select>
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">Symbol</label>
+            <label className="text-sm font-medium text-slate-300">
+              {tCommon("symbol")}
+            </label>
             <Input
               value={symbol}
               onChange={(e) => setSymbol(e.target.value)}
@@ -132,7 +133,7 @@ export default function TrainModelConfig({
           </div>
           <div className="space-y-2">
             <label className="text-sm font-medium text-slate-300">
-              Start Date
+              {tCommon("startDate")}
             </label>
             <Input
               type="datetime-local"
@@ -143,7 +144,7 @@ export default function TrainModelConfig({
           </div>
           <div className="space-y-2">
             <label className="text-sm font-medium text-slate-300">
-              End Date
+              {tCommon("endDate")}
             </label>
             <Input
               type="datetime-local"
@@ -157,12 +158,12 @@ export default function TrainModelConfig({
         {/* Hyperparameters */}
         <div className="space-y-4 pt-4 border-t border-slate-800">
           <h4 className="text-sm font-medium text-slate-400">
-            Hyperparameters
+            {t("hyperparameters")}
           </h4>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="space-y-2">
               <label className="text-xs font-medium text-slate-500 uppercase">
-                Epochs
+                {t("epochs")}
               </label>
               <Input
                 type="number"
@@ -173,7 +174,7 @@ export default function TrainModelConfig({
             </div>
             <div className="space-y-2">
               <label className="text-xs font-medium text-slate-500 uppercase">
-                Batch Size
+                {t("batchSize")}
               </label>
               <Input
                 type="number"
@@ -184,7 +185,7 @@ export default function TrainModelConfig({
             </div>
             <div className="space-y-2">
               <label className="text-xs font-medium text-slate-500 uppercase">
-                Learning Rate
+                {t("learningRate")}
               </label>
               <Input
                 type="number"
@@ -196,7 +197,7 @@ export default function TrainModelConfig({
             </div>
             <div className="space-y-2">
               <label className="text-xs font-medium text-slate-500 uppercase">
-                Sequence Length
+                {t("seqLength")}
               </label>
               <Input
                 type="number"
@@ -217,12 +218,12 @@ export default function TrainModelConfig({
           {loading ? (
             <>
               <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-              Training Model...
+              {t("training")}
             </>
           ) : (
             <>
               <BrainCircuit className="mr-2 h-5 w-5" />
-              Start Training
+              {t("startTraining")}
             </>
           )}
         </Button>

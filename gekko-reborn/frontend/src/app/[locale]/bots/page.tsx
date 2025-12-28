@@ -32,6 +32,7 @@ interface Bot {
 
 export default function BotsPage() {
   const t = useTranslations("Bots");
+  const tCommon = useTranslations("Common");
   const [bots, setBots] = useState<Bot[]>([]);
   const [loading, setLoading] = useState(true);
   const [creating, setCreating] = useState(false);
@@ -122,7 +123,7 @@ export default function BotsPage() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-slate-300">
-                  Strategy
+                  {tCommon("strategy")}
                 </label>
                 <select
                   className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
@@ -138,15 +139,15 @@ export default function BotsPage() {
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-slate-300">
-                  Mode
+                  {t("mode")}
                 </label>
                 <select
                   className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   value={mode}
                   onChange={(e) => setMode(e.target.value)}
                 >
-                  <option value="paper">Paper Trader (Simulated)</option>
-                  <option value="live">Live Trader (Real Money)</option>
+                  <option value="paper">{t("paperTrader")}</option>
+                  <option value="live">{t("liveTrader")}</option>
                 </select>
               </div>
             </div>
@@ -154,7 +155,7 @@ export default function BotsPage() {
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-slate-300">
-                  Exchange
+                  {tCommon("exchange")}
                 </label>
                 <select
                   className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
@@ -167,7 +168,7 @@ export default function BotsPage() {
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium text-slate-300">
-                  Symbol
+                  {tCommon("symbol")}
                 </label>
                 <Input
                   value={symbol}
@@ -180,7 +181,7 @@ export default function BotsPage() {
 
             <div className="space-y-2">
               <label className="text-sm font-medium text-slate-300">
-                Name (Optional)
+                {tCommon("name")} ({tCommon("labelOptional")})
               </label>
               <Input
                 value={name}
@@ -197,7 +198,7 @@ export default function BotsPage() {
               disabled={creating}
             >
               {creating && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Create Bot
+              {t("createBot")}
             </Button>
           </CardFooter>
         </Card>

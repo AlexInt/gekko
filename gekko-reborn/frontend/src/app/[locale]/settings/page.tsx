@@ -25,6 +25,7 @@ interface ApiKey {
 
 export default function SettingsPage() {
   const t = useTranslations("Settings");
+  const tCommon = useTranslations("Common");
   const [keys, setKeys] = useState<ApiKey[]>([]);
   const [loading, setLoading] = useState(true);
   const [adding, setAdding] = useState(false);
@@ -105,7 +106,7 @@ export default function SettingsPage() {
           <CardContent className="space-y-4">
             <div className="space-y-2">
               <label className="text-sm font-medium text-slate-300">
-                Exchange
+                {tCommon("exchange")}
               </label>
               <select
                 className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -120,7 +121,7 @@ export default function SettingsPage() {
 
             <div className="space-y-2">
               <label className="text-sm font-medium text-slate-300">
-                Label (Optional)
+                {t("labelOptional")}
               </label>
               <Input
                 value={name}
@@ -132,7 +133,7 @@ export default function SettingsPage() {
 
             <div className="space-y-2">
               <label className="text-sm font-medium text-slate-300">
-                API Key
+                {t("apiKey")}
               </label>
               <Input
                 value={apiKey}
@@ -144,7 +145,7 @@ export default function SettingsPage() {
 
             <div className="space-y-2">
               <label className="text-sm font-medium text-slate-300">
-                API Secret
+                {t("apiSecret")}
               </label>
               <Input
                 type="password"
@@ -175,10 +176,12 @@ export default function SettingsPage() {
           </CardHeader>
           <CardContent>
             {loading ? (
-              <div className="text-center text-slate-400 py-8">Loading...</div>
+              <div className="text-center text-slate-400 py-8">
+                {tCommon("loading")}
+              </div>
             ) : keys.length === 0 ? (
               <div className="text-center text-slate-500 py-8">
-                No API keys found
+                {tCommon("noData")}
               </div>
             ) : (
               <div className="space-y-4">
