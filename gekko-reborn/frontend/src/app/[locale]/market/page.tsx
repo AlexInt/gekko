@@ -52,10 +52,10 @@ export default function MarketPage() {
         fetchData();
     }, []);
 
-    return (
+            return (
         <div className="grid gap-6">
             <div className="flex items-center justify-between">
-                <h1 className="text-2xl font-bold tracking-tight text-white/90">{t('title')}</h1>
+                <h1 className="text-2xl font-bold tracking-tight text-foreground">{t('title')}</h1>
             </div>
             <Card>
                 <CardHeader>
@@ -63,7 +63,7 @@ export default function MarketPage() {
                 </CardHeader>
                 <CardContent>
                     {loading ? (
-                        <div className="h-[400px] flex items-center justify-center text-slate-400">{t('loading')}</div>
+                        <div className="h-[400px] flex items-center justify-center text-muted-foreground">{t('loading')}</div>
                     ) : (
                         <CandleStickChart data={data} />
                     )}

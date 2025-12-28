@@ -68,7 +68,7 @@ export default function TrainModelConfig({
   };
 
   return (
-    <Card className="border-orange-500/20 bg-slate-900/50">
+    <Card className="border-orange-500/20">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <BrainCircuit className="h-5 w-5 text-orange-400" />
@@ -80,22 +80,21 @@ export default function TrainModelConfig({
         {/* Basic Info */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
+            <label className="text-sm font-medium text-muted-foreground">
               {t("modelName")}
             </label>
             <Input
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="My Alpha Model"
-              className="bg-slate-900 border-slate-700 text-white"
             />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
+            <label className="text-sm font-medium text-muted-foreground">
               {t("architecture")}
             </label>
             <select
-              className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-orange-500"
               value={modelType}
               onChange={(e) => setModelType(e.target.value)}
             >
@@ -109,11 +108,11 @@ export default function TrainModelConfig({
         {/* Data Selection */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
+            <label className="text-sm font-medium text-muted-foreground">
               {tCommon("exchange")}
             </label>
             <select
-              className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-orange-500"
               value={exchange}
               onChange={(e) => setExchange(e.target.value)}
             >
@@ -122,69 +121,66 @@ export default function TrainModelConfig({
             </select>
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
+            <label className="text-sm font-medium text-muted-foreground">
               {tCommon("symbol")}
             </label>
             <Input
               value={symbol}
               onChange={(e) => setSymbol(e.target.value)}
-              className="bg-slate-900 border-slate-700 text-white"
             />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
+            <label className="text-sm font-medium text-muted-foreground">
               {tCommon("startDate")}
             </label>
             <Input
               type="datetime-local"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="bg-slate-900 border-slate-700 text-white"
             />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
+            <label className="text-sm font-medium text-muted-foreground">
               {tCommon("endDate")}
             </label>
             <Input
               type="datetime-local"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="bg-slate-900 border-slate-700 text-white"
             />
           </div>
         </div>
 
         {/* Hyperparameters */}
-        <div className="space-y-4 pt-4 border-t border-slate-800">
-          <h4 className="text-sm font-medium text-slate-400">
+        <div className="space-y-4 pt-4 border-t border-border">
+          <h4 className="text-sm font-medium text-muted-foreground">
             {t("hyperparameters")}
           </h4>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="space-y-2">
-              <label className="text-xs font-medium text-slate-500 uppercase">
+              <label className="text-xs font-medium text-muted-foreground uppercase">
                 {t("epochs")}
               </label>
               <Input
                 type="number"
                 value={epochs}
                 onChange={(e) => setEpochs(Number(e.target.value))}
-                className="bg-slate-900 border-slate-700 text-white h-9"
+                className="h-9"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-medium text-slate-500 uppercase">
+              <label className="text-xs font-medium text-muted-foreground uppercase">
                 {t("batchSize")}
               </label>
               <Input
                 type="number"
                 value={batchSize}
                 onChange={(e) => setBatchSize(Number(e.target.value))}
-                className="bg-slate-900 border-slate-700 text-white h-9"
+                className="h-9"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-medium text-slate-500 uppercase">
+              <label className="text-xs font-medium text-muted-foreground uppercase">
                 {t("learningRate")}
               </label>
               <Input
@@ -192,18 +188,18 @@ export default function TrainModelConfig({
                 step="0.0001"
                 value={learningRate}
                 onChange={(e) => setLearningRate(Number(e.target.value))}
-                className="bg-slate-900 border-slate-700 text-white h-9"
+                className="h-9"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-medium text-slate-500 uppercase">
+              <label className="text-xs font-medium text-muted-foreground uppercase">
                 {t("seqLength")}
               </label>
               <Input
                 type="number"
                 value={seqLength}
                 onChange={(e) => setSeqLength(Number(e.target.value))}
-                className="bg-slate-900 border-slate-700 text-white h-9"
+                className="h-9"
               />
             </div>
           </div>

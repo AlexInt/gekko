@@ -77,7 +77,7 @@ export default function BacktestConfig({
   const currentStrategy = strategies.find((s) => s.id === selectedStrategyId);
 
   return (
-    <Card className="border-indigo-500/20 bg-slate-900/50">
+    <Card className="border-indigo-500/20">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Settings2 className="h-5 w-5 text-indigo-400" />
@@ -89,11 +89,11 @@ export default function BacktestConfig({
         {/* Data Selection */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
+            <label className="text-sm font-medium text-muted-foreground">
               {t("strategy")}
             </label>
             <select
-              className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-indigo-500"
               value={selectedStrategyId}
               onChange={(e) => handleStrategyChange(e.target.value)}
             >
@@ -105,11 +105,11 @@ export default function BacktestConfig({
             </select>
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
+            <label className="text-sm font-medium text-muted-foreground">
               {tCommon("exchange")}
             </label>
             <select
-              className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-indigo-500"
               value={exchange}
               onChange={(e) => setExchange(e.target.value)}
             >
@@ -118,21 +118,20 @@ export default function BacktestConfig({
             </select>
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
+            <label className="text-sm font-medium text-muted-foreground">
               {tCommon("symbol")}
             </label>
             <Input
               value={symbol}
               onChange={(e) => setSymbol(e.target.value)}
-              className="bg-slate-900 border-slate-700 text-white"
             />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
+            <label className="text-sm font-medium text-muted-foreground">
               {tCommon("timeframe")}
             </label>
             <select
-              className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-indigo-500"
               value={timeframe}
               onChange={(e) => setTimeframe(e.target.value)}
             >
@@ -147,56 +146,53 @@ export default function BacktestConfig({
         {/* Date Range & Capital */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
+            <label className="text-sm font-medium text-muted-foreground">
               {tCommon("startDate")}
             </label>
             <Input
               type="datetime-local"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="bg-slate-900 border-slate-700 text-white"
             />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
+            <label className="text-sm font-medium text-muted-foreground">
               {tCommon("endDate")}
             </label>
             <Input
               type="datetime-local"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="bg-slate-900 border-slate-700 text-white"
             />
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-slate-300">
+            <label className="text-sm font-medium text-muted-foreground">
               {t("initialCapital")} (USDT)
             </label>
             <Input
               type="number"
               value={initialCapital}
               onChange={(e) => setInitialCapital(Number(e.target.value))}
-              className="bg-slate-900 border-slate-700 text-white"
             />
           </div>
         </div>
 
         {/* Dynamic Parameters */}
         {currentStrategy && (
-          <div className="space-y-4 pt-4 border-t border-slate-800">
-            <h4 className="text-sm font-medium text-slate-400">
+          <div className="space-y-4 pt-4 border-t border-border">
+            <h4 className="text-sm font-medium text-muted-foreground">
               {t("parameters")}
             </h4>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {Object.entries(params).map(([key, value]) => (
                 <div key={key} className="space-y-2">
-                  <label className="text-xs font-medium text-slate-500 uppercase">
+                  <label className="text-xs font-medium text-muted-foreground uppercase">
                     {key.replace(/_/g, " ")}
                   </label>
                   <Input
                     value={value}
                     onChange={(e) => handleParamChange(key, e.target.value)}
-                    className="bg-slate-900 border-slate-700 text-white h-9"
+                    className="h-9"
                   />
                 </div>
               ))}

@@ -64,7 +64,7 @@ export default function StrategiesPage() {
   return (
     <div className="grid gap-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-tight text-white/90">
+        <h1 className="text-2xl font-bold tracking-tight text-foreground">
           {t("title")}
         </h1>
       </div>
@@ -76,7 +76,7 @@ export default function StrategiesPage() {
       />
 
       {error && (
-        <div className="p-4 bg-red-900/20 border border-red-900/50 text-red-400 rounded-md">
+        <div className="p-4 bg-red-500/10 text-red-600 ring-1 ring-inset ring-red-500/20 rounded-md dark:bg-red-900/20 dark:text-red-400 dark:ring-0 dark:border dark:border-red-900/50">
           Error: {error}
         </div>
       )}

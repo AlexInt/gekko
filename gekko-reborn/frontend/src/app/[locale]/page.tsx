@@ -72,16 +72,16 @@ export default function Home() {
   return (
     <div className="grid gap-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-tight text-white/90">
+        <h1 className="text-2xl font-bold tracking-tight text-foreground">
           {t("title")}
         </h1>
       </div>
 
       {errorMsg && (
-        <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-lg mb-4">
+        <div className="bg-destructive/10 border border-destructive/20 text-destructive p-4 rounded-lg mb-4">
           Error: {errorMsg}
           <br />
-          <span className="text-xs text-red-500/70">Check console for details. API URL: {api.defaults.baseURL}</span>
+          <span className="text-xs text-destructive/70">Check console for details. API URL: {api.defaults.baseURL}</span>
         </div>
       )}
 

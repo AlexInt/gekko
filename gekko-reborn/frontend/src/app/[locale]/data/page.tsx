@@ -74,7 +74,7 @@ export default function DataPage() {
   return (
     <div className="grid gap-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-tight text-white/90">
+        <h1 className="text-2xl font-bold tracking-tight text-foreground">
           {t("title")}
         </h1>
       </div>
@@ -87,11 +87,11 @@ export default function DataPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="text-sm font-medium text-muted-foreground">
                 {tCommon("exchange")}
               </label>
               <select
-                className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 value={selectedExchange}
                 onChange={(e) => setSelectedExchange(e.target.value)}
               >
@@ -104,23 +104,22 @@ export default function DataPage() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="text-sm font-medium text-muted-foreground">
                 {tCommon("symbol")}
               </label>
               <Input
                 value={symbol}
                 onChange={(e) => setSymbol(e.target.value)}
                 placeholder="BTC/USDT"
-                className="bg-slate-900 border-slate-700 text-white"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="text-sm font-medium text-muted-foreground">
                 {tCommon("timeframe")}
               </label>
               <select
-                className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 value={timeframe}
                 onChange={(e) => setTimeframe(e.target.value)}
               >
@@ -135,37 +134,35 @@ export default function DataPage() {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-300">
+                <label className="text-sm font-medium text-muted-foreground">
                   {tCommon("startDate")}
                 </label>
                 <Input
                   type="datetime-local"
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="bg-slate-900 border-slate-700 text-white"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-300">
+                <label className="text-sm font-medium text-muted-foreground">
                   {tCommon("endDate")}
                 </label>
                 <Input
                   type="datetime-local"
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="bg-slate-900 border-slate-700 text-white"
                 />
               </div>
             </div>
 
             {error && (
-              <div className="p-3 text-sm text-red-400 bg-red-900/20 border border-red-900/50 rounded-md">
+              <div className="p-3 text-sm bg-red-500/10 text-red-600 ring-1 ring-inset ring-red-500/20 rounded-md dark:bg-red-900/20 dark:text-red-400 dark:ring-0 dark:border dark:border-red-900/50">
                 {error}
               </div>
             )}
 
             {result && (
-              <div className="p-3 text-sm text-green-400 bg-green-900/20 border border-green-900/50 rounded-md">
+              <div className="p-3 text-sm bg-green-500/10 text-green-600 ring-1 ring-inset ring-green-500/20 rounded-md dark:bg-green-900/20 dark:text-green-400 dark:ring-0 dark:border dark:border-green-900/50">
                 Successfully imported {result.data.imported} candles!
               </div>
             )}
@@ -190,7 +187,7 @@ export default function DataPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="text-sm text-slate-400 text-center py-10">
+            <div className="text-sm text-muted-foreground text-center py-10">
               Dataset list implementation pending...
             </div>
           </CardContent>

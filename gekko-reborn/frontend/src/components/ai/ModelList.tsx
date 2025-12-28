@@ -1,7 +1,6 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge"; // Assuming this exists or I'll implement inline
 import { AIModel } from "@/types";
 import { Brain, CheckCircle2, Clock, XCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -23,19 +22,19 @@ export default function ModelList({ models }: ModelListProps) {
       case "failed":
         return <XCircle className="h-4 w-4 text-red-400" />;
       default:
-        return <Clock className="h-4 w-4 text-slate-400" />;
+        return <Clock className="h-4 w-4 text-muted-foreground" />;
     }
   };
 
   return (
-    <Card className="bg-slate-900/50 border-slate-800">
+    <Card>
       <CardHeader>
         <CardTitle>{t("registry")}</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="relative overflow-x-auto">
-          <table className="w-full text-sm text-left text-slate-400">
-            <thead className="text-xs text-slate-500 uppercase bg-slate-900/50">
+          <table className="w-full text-sm text-left text-muted-foreground">
+            <thead className="text-xs text-muted-foreground uppercase bg-muted/50">
               <tr>
                 <th className="px-6 py-3">{t("name")}</th>
                 <th className="px-6 py-3">{t("type")}</th>
@@ -49,7 +48,7 @@ export default function ModelList({ models }: ModelListProps) {
                 <tr>
                   <td
                     colSpan={5}
-                    className="px-6 py-8 text-center text-slate-500"
+                    className="px-6 py-8 text-center text-muted-foreground"
                   >
                     {tCommon("noData")}
                   </td>
@@ -58,16 +57,16 @@ export default function ModelList({ models }: ModelListProps) {
                 models.map((model) => (
                   <tr
                     key={model.id}
-                    className="border-b border-slate-800 hover:bg-slate-800/30 transition-colors"
+                    className="border-b border-border hover:bg-muted/50 transition-colors"
                   >
-                    <td className="px-6 py-4 font-medium text-white flex items-center gap-2">
+                    <td className="px-6 py-4 font-medium text-foreground flex items-center gap-2">
                       <div className="p-1.5 rounded bg-indigo-500/10">
                         <Brain className="h-4 w-4 text-indigo-400" />
                       </div>
                       {model.name}
                     </td>
                     <td className="px-6 py-4">
-                      <span className="px-2 py-1 rounded text-xs font-medium bg-slate-800 text-slate-300 border border-slate-700">
+                      <span className="px-2 py-1 rounded text-xs font-medium bg-muted text-muted-foreground border border-border">
                         {model.type}
                       </span>
                     </td>
@@ -77,7 +76,7 @@ export default function ModelList({ models }: ModelListProps) {
                         <span className="capitalize">{model.status}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 font-mono text-white">
+                    <td className="px-6 py-4 font-mono text-foreground">
                       {model.accuracy
                         ? `${(model.accuracy * 100).toFixed(2)}%`
                         : "-"}

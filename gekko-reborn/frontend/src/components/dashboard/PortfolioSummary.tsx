@@ -25,7 +25,7 @@ const PortfolioSummary: React.FC<PortfolioSummaryProps> = ({
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold animate-pulse bg-slate-800/50 h-8 w-32 rounded"></div>
+            <div className="text-2xl font-bold animate-pulse bg-muted h-8 w-32 rounded"></div>
           </CardContent>
         </Card>
       </div>
@@ -36,38 +36,35 @@ const PortfolioSummary: React.FC<PortfolioSummaryProps> = ({
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium text-slate-300">
+          <CardTitle className="text-sm font-medium text-muted-foreground">
             {t("totalBalance")}
           </CardTitle>
-          <div className="p-2 bg-indigo-500/10 rounded-full">
-            <FontAwesomeIcon
-              icon={faWallet}
-              className="h-4 w-4 text-indigo-400"
-            />
+          <div className="p-2 bg-primary/10 rounded-full">
+            <FontAwesomeIcon icon={faWallet} className="h-4 w-4 text-primary" />
           </div>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold text-white">
+          <div className="text-2xl font-bold text-foreground">
             $
             {portfolio?.total_balance_usdt.toLocaleString(undefined, {
               minimumFractionDigits: 2,
             })}
           </div>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-xs text-muted-foreground mt-1">
             +20.1% {t("fromLastMonth")}
           </p>
         </CardContent>
       </Card>
-      {/* Add more cards for specific assets if needed */}
-      <Card className="col-span-3">
+
+      <Card className="col-span-1 md:col-span-1 lg:col-span-3">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-slate-300">
+          <CardTitle className="text-sm font-medium text-muted-foreground">
             {t("assetAllocation")}
           </CardTitle>
           <div className="p-2 bg-purple-500/10 rounded-full">
             <FontAwesomeIcon
               icon={faChartPie}
-              className="h-4 w-4 text-purple-400"
+              className="h-4 w-4 text-purple-500"
             />
           </div>
         </CardHeader>
@@ -75,10 +72,10 @@ const PortfolioSummary: React.FC<PortfolioSummaryProps> = ({
           <div className="space-y-4 mt-2">
             {portfolio?.items.map((item) => (
               <div key={item.asset} className="flex items-center">
-                <div className="w-16 font-medium text-slate-200">
+                <div className="w-16 font-medium text-foreground">
                   {item.asset}
                 </div>
-                <div className="flex-1 bg-slate-800/50 rounded-full h-2.5 ml-4 overflow-hidden">
+                <div className="flex-1 bg-secondary rounded-full h-2.5 ml-4 overflow-hidden">
                   <div
                     className="bg-gradient-to-r from-indigo-500 to-purple-500 h-2.5 rounded-full"
                     style={{
@@ -90,7 +87,7 @@ const PortfolioSummary: React.FC<PortfolioSummaryProps> = ({
                     }}
                   ></div>
                 </div>
-                <div className="ml-4 text-sm text-slate-400 min-w-[80px] text-right">
+                <div className="ml-4 text-sm text-muted-foreground min-w-[80px] text-right">
                   $
                   {item.value_in_usdt.toLocaleString(undefined, {
                     maximumFractionDigits: 2,

@@ -67,18 +67,16 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="space-y-4 py-4 flex flex-col h-full bg-slate-900/30 backdrop-blur-xl border-r border-white/5 w-64 text-white">
+    <div className="space-y-4 py-4 flex flex-col h-full bg-sidebar border-r border-sidebar-border w-64 text-sidebar-foreground">
       <div className="px-3 py-2 flex-1">
         <Link href={`/${locale}`} className="flex items-center pl-3 mb-14">
           <div className="relative w-8 h-8 mr-4">
-            <div className="absolute inset-0 bg-indigo-500 blur-lg opacity-50 rounded-full"></div>
-            <div className="relative w-full h-full bg-indigo-600 rounded-lg flex items-center justify-center font-bold text-lg">
+            <div className="absolute inset-0 bg-primary blur-lg opacity-50 rounded-full"></div>
+            <div className="relative w-full h-full bg-primary rounded-lg flex items-center justify-center font-bold text-lg text-primary-foreground">
               G
             </div>
           </div>
-          <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400">
-            Gekko
-          </h1>
+          <h1 className="text-2xl font-bold text-sidebar-foreground">Gekko</h1>
         </Link>
         <div className="space-y-2">
           {routes.map((route) => (
@@ -88,8 +86,8 @@ const Sidebar = () => {
               className={cn(
                 "text-sm group flex p-3 w-full justify-start font-medium cursor-pointer rounded-xl transition-all duration-200",
                 pathname === route.href
-                  ? "bg-white/10 text-white shadow-lg shadow-indigo-500/10 border border-white/10"
-                  : "text-slate-400 hover:text-white hover:bg-white/5"
+                  ? "bg-sidebar-accent text-sidebar-accent-foreground shadow-sm ring-1 ring-sidebar-ring/20"
+                  : "text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent/80 hover:ring-1 hover:ring-sidebar-ring/20 dark:hover:bg-sidebar-accent/50"
               )}
             >
               <div className="flex items-center flex-1">

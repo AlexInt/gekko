@@ -7,6 +7,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { useTransition } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { ModeToggle } from "@/components/theme/ModeToggle";
 
 const Navbar = () => {
   const locale = useLocale();
@@ -36,11 +37,11 @@ const Navbar = () => {
   return (
     <div className="flex items-center p-4 w-full justify-end bg-transparent h-16 z-50">
       <div className="flex items-center gap-x-4">
-        <div className="glass px-4 py-2 rounded-full flex items-center gap-x-4 border border-white/5 bg-slate-900/30 backdrop-blur-md">
+        <div className="glass px-4 py-2 rounded-full flex items-center gap-x-4">
           {/* Segmented Control for Language */}
-          <div className="relative flex w-24 bg-slate-950/40 border border-white/10 rounded-full p-1 h-8">
+          <div className="relative flex w-24 bg-muted/50 border border-border/50 rounded-full p-1 h-8">
             <motion.div
-              className="absolute top-1 bottom-1 bg-indigo-600 rounded-full shadow-lg shadow-indigo-500/20 z-0"
+              className="absolute top-1 bottom-1 bg-primary rounded-full shadow-sm z-0"
               initial={false}
               animate={{
                 x: locale === "en" ? 0 : "100%",
@@ -57,8 +58,8 @@ const Navbar = () => {
               className={cn(
                 "relative z-10 w-1/2 flex items-center justify-center text-[10px] font-bold transition-colors duration-200",
                 locale === "en"
-                  ? "text-white"
-                  : "text-slate-400 hover:text-slate-200"
+                  ? "text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               )}
             >
               EN
@@ -69,27 +70,29 @@ const Navbar = () => {
               className={cn(
                 "relative z-10 w-1/2 flex items-center justify-center text-[10px] font-bold transition-colors duration-200",
                 locale === "zh"
-                  ? "text-white"
-                  : "text-slate-400 hover:text-slate-200"
+                  ? "text-primary-foreground"
+                  : "text-muted-foreground hover:text-foreground"
               )}
             >
               中文
             </button>
           </div>
 
-          <div className="h-6 w-px bg-white/10"></div>
+          <div className="h-6 w-px bg-border/50"></div>
 
-          <button className="p-2 rounded-full hover:bg-white/10 transition text-slate-400 hover:text-white">
+          <ModeToggle />
+
+          <button className="p-2 rounded-full hover:bg-accent transition text-muted-foreground hover:text-foreground">
             <FontAwesomeIcon icon={faBell} className="h-5 w-5" />
           </button>
 
-          <div className="h-6 w-px bg-white/10"></div>
+          <div className="h-6 w-px bg-border/50"></div>
 
-          <button className="flex items-center gap-x-2 p-1 pr-3 rounded-full hover:bg-white/10 transition">
-            <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-sm font-bold shadow-lg shadow-indigo-500/20">
-              <FontAwesomeIcon icon={faUser} className="h-4 w-4 text-white" />
+          <button className="flex items-center gap-x-2 p-1 pr-3 rounded-full hover:bg-accent transition">
+            <div className="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-sm font-bold shadow-sm text-white">
+              <FontAwesomeIcon icon={faUser} className="h-4 w-4" />
             </div>
-            <span className="text-sm font-medium text-slate-200">User</span>
+            <span className="text-sm font-medium text-foreground">User</span>
           </button>
         </div>
       </div>

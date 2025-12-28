@@ -51,7 +51,7 @@ export default function AIPage() {
   return (
     <div className="grid gap-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-tight text-white/90">
+        <h1 className="text-2xl font-bold tracking-tight text-foreground">
           {t("title")}
         </h1>
         <Button

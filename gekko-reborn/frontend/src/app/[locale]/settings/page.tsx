@@ -91,7 +91,7 @@ export default function SettingsPage() {
   return (
     <div className="grid gap-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-tight text-white/90">
+        <h1 className="text-2xl font-bold tracking-tight text-foreground">
           {t("title")}
         </h1>
       </div>
@@ -105,11 +105,11 @@ export default function SettingsPage() {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="text-sm font-medium text-muted-foreground">
                 {tCommon("exchange")}
               </label>
               <select
-                className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-indigo-500"
                 value={exchange}
                 onChange={(e) => setExchange(e.target.value)}
               >
@@ -120,31 +120,29 @@ export default function SettingsPage() {
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="text-sm font-medium text-muted-foreground">
                 {t("labelOptional")}
               </label>
               <Input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="My Main Account"
-                className="bg-slate-900 border-slate-700 text-white"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="text-sm font-medium text-muted-foreground">
                 {t("apiKey")}
               </label>
               <Input
                 value={apiKey}
                 onChange={(e) => setApiKey(e.target.value)}
                 placeholder="Enter API Key"
-                className="bg-slate-900 border-slate-700 text-white"
               />
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="text-sm font-medium text-muted-foreground">
                 {t("apiSecret")}
               </label>
               <Input
@@ -152,7 +150,6 @@ export default function SettingsPage() {
                 value={apiSecret}
                 onChange={(e) => setApiSecret(e.target.value)}
                 placeholder="Enter API Secret"
-                className="bg-slate-900 border-slate-700 text-white"
               />
             </div>
           </CardContent>
@@ -176,11 +173,11 @@ export default function SettingsPage() {
           </CardHeader>
           <CardContent>
             {loading ? (
-              <div className="text-center text-slate-400 py-8">
+              <div className="text-center text-muted-foreground py-8">
                 {tCommon("loading")}
               </div>
             ) : keys.length === 0 ? (
-              <div className="text-center text-slate-500 py-8">
+              <div className="text-center text-muted-foreground py-8">
                 {tCommon("noData")}
               </div>
             ) : (
@@ -188,18 +185,20 @@ export default function SettingsPage() {
                 {keys.map((key) => (
                   <div
                     key={key.id}
-                    className="flex items-center justify-between p-4 rounded-lg bg-slate-900/50 border border-slate-800"
+                    className="flex items-center justify-between p-4 rounded-lg bg-card border border-border"
                   >
                     <div className="flex items-center space-x-4">
                       <div className="p-2 bg-indigo-500/10 rounded-full">
                         <Key className="h-5 w-5 text-indigo-400" />
                       </div>
                       <div>
-                        <div className="font-medium text-white">
+                        <div className="font-medium text-foreground">
                           {key.exchange.toUpperCase()}
                         </div>
-                        <div className="text-xs text-slate-400">{key.name}</div>
-                        <div className="text-xs text-slate-500 font-mono mt-1">
+                        <div className="text-xs text-muted-foreground">
+                          {key.name}
+                        </div>
+                        <div className="text-xs text-muted-foreground font-mono mt-1">
                           {key.key}
                         </div>
                       </div>
@@ -207,7 +206,7 @@ export default function SettingsPage() {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="text-red-400 hover:text-red-300 hover:bg-red-900/20"
+                      className="text-red-600 dark:text-red-400 hover:bg-red-500/10 dark:hover:bg-red-900/20"
                       onClick={() => handleDelete(key.id)}
                     >
                       <Trash2 className="h-4 w-4" />

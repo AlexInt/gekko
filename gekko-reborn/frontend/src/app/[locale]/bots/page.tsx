@@ -102,7 +102,7 @@ export default function BotsPage() {
   return (
     <div className="grid gap-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-tight text-white/90">
+        <h1 className="text-2xl font-bold tracking-tight text-foreground">
           {t("title")}
         </h1>
         <Button
@@ -122,11 +122,11 @@ export default function BotsPage() {
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-300">
+                <label className="text-sm font-medium text-muted-foreground">
                   {tCommon("strategy")}
                 </label>
                 <select
-                  className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   value={strategy}
                   onChange={(e) => setStrategy(e.target.value)}
                 >
@@ -138,11 +138,11 @@ export default function BotsPage() {
                 </select>
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-300">
+                <label className="text-sm font-medium text-muted-foreground">
                   {t("mode")}
                 </label>
                 <select
-                  className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   value={mode}
                   onChange={(e) => setMode(e.target.value)}
                 >
@@ -154,11 +154,11 @@ export default function BotsPage() {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-300">
+                <label className="text-sm font-medium text-muted-foreground">
                   {tCommon("exchange")}
                 </label>
                 <select
-                  className="flex h-10 w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   value={exchange}
                   onChange={(e) => setExchange(e.target.value)}
                 >
@@ -167,27 +167,25 @@ export default function BotsPage() {
                 </select>
               </div>
               <div className="space-y-2">
-                <label className="text-sm font-medium text-slate-300">
+                <label className="text-sm font-medium text-muted-foreground">
                   {tCommon("symbol")}
                 </label>
                 <Input
                   value={symbol}
                   onChange={(e) => setSymbol(e.target.value)}
                   placeholder="BTC/USDT"
-                  className="bg-slate-900 border-slate-700 text-white"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-sm font-medium text-slate-300">
+              <label className="text-sm font-medium text-muted-foreground">
                 {tCommon("name")} ({tCommon("labelOptional")})
               </label>
               <Input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="My Moon Bot"
-                className="bg-slate-900 border-slate-700 text-white"
               />
             </div>
           </CardContent>
@@ -206,19 +204,19 @@ export default function BotsPage() {
 
       <div className="grid gap-4">
         {loading ? (
-          <div className="text-center text-slate-400 py-10">
+          <div className="text-center text-muted-foreground py-10">
             Loading bots...
           </div>
         ) : bots.length === 0 ? (
-          <Card className="bg-slate-900/50 border-dashed border-slate-800">
-            <CardContent className="flex flex-col items-center justify-center py-10 text-slate-500">
+          <Card className="border-dashed">
+            <CardContent className="flex flex-col items-center justify-center py-10 text-muted-foreground">
               <BotIcon className="h-10 w-10 mb-4 opacity-20" />
               <p>{t("noBots")}</p>
             </CardContent>
           </Card>
         ) : (
           bots.map((bot) => (
-            <Card key={bot.id} className="bg-slate-900/50 border-slate-800">
+            <Card key={bot.id}>
               <CardContent className="p-6">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
@@ -226,27 +224,27 @@ export default function BotsPage() {
                       className={`p-3 rounded-full ${
                         bot.status === "running"
                           ? "bg-emerald-500/10 text-emerald-400"
-                          : "bg-slate-800 text-slate-400"
+                          : "bg-muted text-muted-foreground"
                       }`}
                     >
                       <BotIcon className="h-6 w-6" />
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <h3 className="font-semibold text-lg text-white">
+                        <h3 className="font-semibold text-lg text-foreground">
                           {bot.name}
                         </h3>
                         <span
                           className={`px-2 py-0.5 rounded text-xs font-medium ${
                             bot.mode === "live"
-                              ? "bg-red-900/30 text-red-400 border border-red-900/50"
-                              : "bg-blue-900/30 text-blue-400 border border-blue-900/50"
+                              ? "bg-red-500/10 text-red-600 ring-1 ring-inset ring-red-500/20 dark:bg-red-900/30 dark:text-red-400 dark:border dark:border-red-900/50 dark:ring-0"
+                              : "bg-blue-500/10 text-blue-600 ring-1 ring-inset ring-blue-500/20 dark:bg-blue-900/30 dark:text-blue-400 dark:border dark:border-blue-900/50 dark:ring-0"
                           }`}
                         >
                           {bot.mode.toUpperCase()}
                         </span>
                       </div>
-                      <div className="text-sm text-slate-400 mt-1">
+                      <div className="text-sm text-muted-foreground mt-1">
                         {bot.strategy} • {bot.exchange.toUpperCase()}{" "}
                         {bot.symbol}
                       </div>
@@ -255,34 +253,34 @@ export default function BotsPage() {
 
                   <div className="flex items-center gap-6">
                     <div className="text-right">
-                      <div className="text-xs text-slate-500 uppercase">
+                      <div className="text-xs text-muted-foreground uppercase">
                         Status
                       </div>
                       <div
                         className={`font-medium ${
                           bot.status === "running"
-                            ? "text-emerald-400"
-                            : "text-slate-400"
+                            ? "text-emerald-600 dark:text-emerald-400"
+                            : "text-muted-foreground"
                         }`}
                       >
                         {bot.status.toUpperCase()}
                       </div>
                     </div>
                     <div className="text-right hidden md:block">
-                      <div className="text-xs text-slate-500 uppercase">
+                      <div className="text-xs text-muted-foreground uppercase">
                         Balance
                       </div>
-                      <div className="font-mono text-white">
+                      <div className="font-mono text-foreground">
                         ${bot.current_balance.toFixed(2)}
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2 border-l border-slate-800 pl-6">
+                    <div className="flex items-center gap-2 border-l border-border pl-6">
                       {bot.status === "stopped" ? (
                         <Button
                           size="icon"
                           variant="ghost"
-                          className="text-emerald-400 hover:bg-emerald-900/20"
+                          className="text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/10 dark:hover:bg-emerald-900/20"
                           onClick={() => handleAction(bot.id, "start")}
                         >
                           <Play className="h-4 w-4" />
@@ -291,7 +289,7 @@ export default function BotsPage() {
                         <Button
                           size="icon"
                           variant="ghost"
-                          className="text-yellow-400 hover:bg-yellow-900/20"
+                          className="text-yellow-600 dark:text-yellow-400 hover:bg-yellow-500/10 dark:hover:bg-yellow-900/20"
                           onClick={() => handleAction(bot.id, "stop")}
                         >
                           <Square className="h-4 w-4" />
@@ -301,7 +299,7 @@ export default function BotsPage() {
                       <Button
                         size="icon"
                         variant="ghost"
-                        className="text-red-400 hover:bg-red-900/20"
+                        className="text-red-600 dark:text-red-400 hover:bg-red-500/10 dark:hover:bg-red-900/20"
                         onClick={() => handleAction(bot.id, "delete")}
                         disabled={bot.status === "running"}
                       >

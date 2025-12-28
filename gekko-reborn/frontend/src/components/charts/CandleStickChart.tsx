@@ -2,6 +2,7 @@
 
 import { createChart, ColorType, IChartApi } from 'lightweight-charts';
 import React, { useEffect, useRef } from 'react';
+import { useTheme } from "next-themes";
 
 interface CandleData {
     time: string; // 'yyyy-mm-dd'
@@ -23,11 +24,12 @@ interface CandleStickChartProps {
 }
 
 export const CandleStickChart = (props: CandleStickChartProps) => {
+    const { resolvedTheme } = useTheme();
     const {
         data,
         colors: {
             backgroundColor = 'transparent',
-            textColor = '#DDD',
+            textColor,
         } = {},
     } = props;
 
@@ -35,6 +37,12 @@ export const CandleStickChart = (props: CandleStickChartProps) => {
     const chartRef = useRef<IChartApi | null>(null);
 
     useEffect(() => {
+        const isDark = resolvedTheme === "dark";
+        const resolvedTextColor = textColor ?? (isDark ? "#e2e8f0" : "#0f172a");
+        const gridLineColor = isDark
+            ? "rgba(197, 203, 206, 0.1)"
+            : "rgba(15, 23, 42, 0.12)";
+
         const handleResize = () => {
             if (chartRef.current && chartContainerRef.current) {
                 chartRef.current.applyOptions({ width: chartContainerRef.current.clientWidth });
@@ -45,19 +53,19 @@ export const CandleStickChart = (props: CandleStickChartProps) => {
             const chart = createChart(chartContainerRef.current, {
                 layout: {
                     background: { type: ColorType.Solid, color: backgroundColor },
-                    textColor,
+                    textColor: resolvedTextColor,
                 },
                 width: chartContainerRef.current.clientWidth,
                 height: 400,
                 grid: {
-                    vertLines: { color: 'rgba(197, 203, 206, 0.1)' },
-                    horzLines: { color: 'rgba(197, 203, 206, 0.1)' },
+                    vertLines: { color: gridLineColor },
+                    horzLines: { color: gridLineColor },
                 },
                 timeScale: {
-                    borderColor: 'rgba(197, 203, 206, 0.1)',
+                    borderColor: gridLineColor,
                 },
                 rightPriceScale: {
-                    borderColor: 'rgba(197, 203, 206, 0.1)',
+                    borderColor: gridLineColor,
                 }
             });
             chartRef.current = chart;
@@ -83,7 +91,7 @@ export const CandleStickChart = (props: CandleStickChartProps) => {
                 chart.remove();
             };
         }
-    }, [data, backgroundColor, textColor]);
+    }, [data, backgroundColor, resolvedTheme, textColor]);
 
     return (
         <div

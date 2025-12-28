@@ -27,26 +27,34 @@ const ActiveOrders: React.FC<ActiveOrdersProps> = ({ orders, loading }) => {
       <CardContent>
         <Table>
           <TableHeader>
-            <TableRow className="border-b border-white/5 hover:bg-white/5">
-              <TableHead className="text-slate-400">Symbol</TableHead>
-              <TableHead className="text-slate-400">Side</TableHead>
-              <TableHead className="text-slate-400">Type</TableHead>
-              <TableHead className="text-slate-400">Price</TableHead>
-              <TableHead className="text-slate-400">Amount</TableHead>
-              <TableHead className="text-slate-400">Status</TableHead>
-              <TableHead className="text-right text-slate-400">Date</TableHead>
+            <TableRow className="border-b border-border hover:bg-muted/50">
+              <TableHead className="text-muted-foreground">Symbol</TableHead>
+              <TableHead className="text-muted-foreground">Side</TableHead>
+              <TableHead className="text-muted-foreground">Type</TableHead>
+              <TableHead className="text-muted-foreground">Price</TableHead>
+              <TableHead className="text-muted-foreground">Amount</TableHead>
+              <TableHead className="text-muted-foreground">Status</TableHead>
+              <TableHead className="text-right text-muted-foreground">
+                Date
+              </TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {loading ? (
-              <TableRow className="border-b border-white/5 hover:bg-white/5">
-                <TableCell colSpan={7} className="text-center text-slate-400">
+              <TableRow className="border-b border-border hover:bg-muted/50">
+                <TableCell
+                  colSpan={7}
+                  className="text-center text-muted-foreground"
+                >
                   {tCommon("loading")}
                 </TableCell>
               </TableRow>
             ) : orders.length === 0 ? (
-              <TableRow className="border-b border-white/5 hover:bg-white/5">
-                <TableCell colSpan={7} className="text-center text-slate-500">
+              <TableRow className="border-b border-border hover:bg-muted/50">
+                <TableCell
+                  colSpan={7}
+                  className="text-center text-muted-foreground"
+                >
                   {tCommon("noData")}
                 </TableCell>
               </TableRow>
@@ -54,9 +62,9 @@ const ActiveOrders: React.FC<ActiveOrdersProps> = ({ orders, loading }) => {
               orders.map((order) => (
                 <TableRow
                   key={order.id}
-                  className="border-b border-white/5 hover:bg-white/5"
+                  className="border-b border-border hover:bg-muted/50"
                 >
-                  <TableCell className="font-medium text-slate-200">
+                  <TableCell className="font-medium text-foreground">
                     {order.symbol}
                   </TableCell>
                   <TableCell>
@@ -70,19 +78,19 @@ const ActiveOrders: React.FC<ActiveOrdersProps> = ({ orders, loading }) => {
                       {order.side.toUpperCase()}
                     </span>
                   </TableCell>
-                  <TableCell className="text-slate-300">
+                  <TableCell className="text-muted-foreground">
                     {order.type.toUpperCase()}
                   </TableCell>
-                  <TableCell className="text-slate-300">
+                  <TableCell className="text-muted-foreground">
                     ${order.price}
                   </TableCell>
-                  <TableCell className="text-slate-300">
+                  <TableCell className="text-muted-foreground">
                     {order.quantity}
                   </TableCell>
-                  <TableCell className="text-slate-300">
+                  <TableCell className="text-muted-foreground">
                     {order.status}
                   </TableCell>
-                  <TableCell className="text-right text-slate-400">
+                  <TableCell className="text-right text-muted-foreground">
                     {new Date(order.created_at).toLocaleDateString()}
                   </TableCell>
                 </TableRow>
