@@ -23,14 +23,16 @@ class TrainRequest(BaseModel):
     end_date: str
     model_type: str = "LSTM"
     feature_config: List[Dict[str, Any]]
-    model_config: Dict[str, Any]
+    configuration: Dict[str, Any]
 
 @router.post("/train")
 async def train_model(request: TrainRequest, db: AsyncSession = Depends(get_db)):
     trainer = AITrainer(db)
     try:
         # 注意：这是一个耗时任务。在生产环境中，请使用 Celery。
-        result = await trainer.train_model(request.model_dump())
+        data = request.model_dump()
+        data['model_config'] = data.pop('configuration')
+        result = await trainer.train_model(data)
         return result
     except Exception as e:
         import traceback

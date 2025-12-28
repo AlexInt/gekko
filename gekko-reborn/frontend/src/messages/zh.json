@@ -1,0 +1,53 @@
+{
+  "Dashboard": {
+    "title": "仪表盘",
+    "totalBalance": "总资产",
+    "activeOrders": "活跃订单",
+    "openPositions": "持仓",
+    "dailyPnL": "日收益",
+    "recentOrders": "最近订单",
+    "assetAllocation": "资产分布",
+    "fromLastMonth": "较上月"
+  },
+  "Market": {
+    "title": "市场行情",
+    "loading": "加载市场数据中..."
+  },
+  "Strategies": {
+    "title": "策略管理",
+    "runBacktest": "运行回测",
+    "running": "运行中...",
+    "parameters": "参数",
+    "lastResult": "最近回测结果",
+    "totalReturn": "总收益率",
+    "maxDrawdown": "最大回撤",
+    "trades": "交易次数",
+    "winRate": "胜率"
+  },
+  "AI": {
+    "title": "AI 模型",
+    "trainNew": "训练新模型",
+    "training": "训练中...",
+    "totalModels": "模型总数",
+    "registry": "模型仓库",
+    "manageModels": "管理已训练的 AI 模型。",
+    "id": "ID",
+    "name": "名称",
+    "type": "类型",
+    "status": "状态",
+    "accuracy": "准确率",
+    "createdAt": "创建时间"
+  },
+  "Sidebar": {
+    "dashboard": "仪表盘",
+    "market": "市场",
+    "strategies": "策略",
+    "aiModels": "AI 模型",
+    "history": "历史",
+    "settings": "设置"
+  },
+  "Common": {
+    "loading": "加载中...",
+    "noData": "暂无数据"
+  }
+}

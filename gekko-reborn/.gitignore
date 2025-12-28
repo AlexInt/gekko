@@ -1,0 +1,9 @@
+# General
+.DS_Store
+.idea/
+.vscode/
+*.log
+.next/
+node_modules/
+
+# Project specific

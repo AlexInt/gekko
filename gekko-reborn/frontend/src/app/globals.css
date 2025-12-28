@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #020617; /* slate-950 */
+  --color-foreground: #f8fafc; /* slate-50 */
+  --color-primary: #6366f1; /* indigo-500 */
+  --color-primary-foreground: #ffffff;
+
+  --color-card: rgba(15, 23, 42, 0.5); /* slate-900/50 */
+  --color-card-foreground: #f8fafc;
+
+  --color-popover: #0f172a;
+  --color-popover-foreground: #f8fafc;
+
+  --color-secondary: #1e293b; /* slate-800 */
+  --color-secondary-foreground: #f8fafc;
+
+  --color-muted: #1e293b;
+  --color-muted-foreground: #94a3b8; /* slate-400 */
+
+  --color-accent: #1e293b;
+  --color-accent-foreground: #f8fafc;
+
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #f8fafc;
+
+  --color-border: #1e293b;
+  --color-input: #1e293b;
+  --color-ring: #6366f1;
+
+  --radius: 0.5rem;
+}
+
+/* Custom Utilities for Glassmorphism */
+@utility glass {
+  background-color: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+@utility glass-hover {
+  @apply hover:bg-slate-800/60 hover:border-white/10 transition-all duration-300;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  color: var(--color-foreground);
+  background: radial-gradient(
+    circle at 50% 0%,
+    #1e1b4b 0%,
+    #020617 50%,
+    #020617 100%
+  );
+  min-height: 100vh;
+}

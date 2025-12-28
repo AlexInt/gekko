@@ -1,0 +1,53 @@
+{
+  "Dashboard": {
+    "title": "Dashboard",
+    "totalBalance": "Total Balance",
+    "activeOrders": "Active Orders",
+    "openPositions": "Open Positions",
+    "dailyPnL": "Daily PnL",
+    "recentOrders": "Recent Orders",
+    "assetAllocation": "Asset Allocation",
+    "fromLastMonth": "from last month"
+  },
+  "Market": {
+    "title": "Market",
+    "loading": "Loading Market Data..."
+  },
+  "Strategies": {
+    "title": "Strategies",
+    "runBacktest": "Run Backtest",
+    "running": "Running...",
+    "parameters": "Parameters",
+    "lastResult": "Last Backtest Result",
+    "totalReturn": "Total Return",
+    "maxDrawdown": "Max Drawdown",
+    "trades": "Trades",
+    "winRate": "Win Rate"
+  },
+  "AI": {
+    "title": "AI Models",
+    "trainNew": "Train New Model",
+    "training": "Training...",
+    "totalModels": "Total Models",
+    "registry": "Model Registry",
+    "manageModels": "Manage your trained AI models.",
+    "id": "ID",
+    "name": "Name",
+    "type": "Type",
+    "status": "Status",
+    "accuracy": "Accuracy",
+    "createdAt": "Created At"
+  },
+  "Sidebar": {
+    "dashboard": "Dashboard",
+    "market": "Market",
+    "strategies": "Strategies",
+    "aiModels": "AI Models",
+    "history": "History",
+    "settings": "Settings"
+  },
+  "Common": {
+    "loading": "Loading...",
+    "noData": "No data found"
+  }
+}
