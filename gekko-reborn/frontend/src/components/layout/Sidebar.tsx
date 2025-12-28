@@ -11,6 +11,8 @@ import {
   faBrain,
   faClockRotateLeft,
   faGear,
+  faDatabase,
+  faRobot,
 } from "@fortawesome/free-solid-svg-icons";
 import { cn } from "@/lib/utils";
 
@@ -31,6 +33,12 @@ const Sidebar = () => {
       icon: faChartLine,
       href: `/${locale}/market`,
       color: "text-violet-400",
+    },
+    {
+      label: t("bots"),
+      icon: faRobot,
+      href: `/${locale}/bots`,
+      color: "text-emerald-400",
     },
     {
       label: t("strategies"),

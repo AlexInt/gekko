@@ -38,13 +38,42 @@
     "accuracy": "Accuracy",
     "createdAt": "Created At"
   },
+  "Data": {
+    "title": "Data Management",
+    "importData": "Import Market Data",
+    "importDescription": "Download historical candles from exchanges.",
+    "availableDatasets": "Available Datasets"
+  },
   "Sidebar": {
     "dashboard": "Dashboard",
     "market": "Market",
+    "data": "Data",
+    "bots": "Trading Bots",
+    "strategies": "Strategies",
     "strategies": "Strategies",
     "aiModels": "AI Models",
     "history": "History",
     "settings": "Settings"
+  },
+  "Bots": {
+    "title": "Trading Bots",
+    "createBot": "Create New Bot",
+    "createDesc": "Configure a new trading instance.",
+    "runningBots": "Active Bots",
+    "noBots": "No trading bots found. Create one to start trading.",
+    "start": "Start",
+    "stop": "Stop",
+    "delete": "Delete",
+    "status": "Status",
+    "mode": "Mode"
+  },
+  "Settings": {
+    "title": "Settings",
+    "addKey": "Add API Key",
+    "addKeyDesc": "Connect your exchange account.",
+    "saveKey": "Save API Key",
+    "manageKeys": "Existing Keys",
+    "manageKeysDesc": "Manage your connected exchange keys."
   },
   "Common": {
     "loading": "Loading...",

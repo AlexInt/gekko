@@ -38,13 +38,42 @@
     "accuracy": "准确率",
     "createdAt": "创建时间"
   },
+  "Data": {
+    "title": "数据管理",
+    "importData": "导入市场数据",
+    "importDescription": "从交易所下载历史 K 线数据。",
+    "availableDatasets": "可用数据集"
+  },
   "Sidebar": {
     "dashboard": "仪表盘",
     "market": "市场",
+    "data": "数据",
+    "bots": "交易机器人",
+    "strategies": "策略",
     "strategies": "策略",
     "aiModels": "AI 模型",
     "history": "历史",
     "settings": "设置"
+  },
+  "Bots": {
+    "title": "交易机器人",
+    "createBot": "创建机器人",
+    "createDesc": "配置新的交易实例。",
+    "runningBots": "活跃机器人",
+    "noBots": "未找到交易机器人。请创建一个以开始交易。",
+    "start": "启动",
+    "stop": "停止",
+    "delete": "删除",
+    "status": "状态",
+    "mode": "模式"
+  },
+  "Settings": {
+    "title": "设置",
+    "addKey": "添加 API 密钥",
+    "addKeyDesc": "连接您的交易所账户。",
+    "saveKey": "保存密钥",
+    "manageKeys": "已存密钥",
+    "manageKeysDesc": "管理已连接的交易所密钥。"
   },
   "Common": {
     "loading": "加载中...",
