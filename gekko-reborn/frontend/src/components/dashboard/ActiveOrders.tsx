@@ -20,7 +20,7 @@ const ActiveOrders: React.FC<ActiveOrdersProps> = ({ orders, loading }) => {
   const tCommon = useTranslations("Common");
 
   return (
-    <Card className="col-span-4">
+    <Card className="col-span-1 lg:col-span-4">
       <CardHeader>
         <CardTitle>{t("recentOrders")}</CardTitle>
       </CardHeader>

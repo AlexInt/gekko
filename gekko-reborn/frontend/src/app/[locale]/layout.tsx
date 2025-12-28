@@ -1,8 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "@/app/globals.css";
-import Sidebar from "@/components/layout/Sidebar";
-import Navbar from "@/components/layout/Navbar";
+import AppFrame from "../../components/layout/AppFrame";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -13,6 +12,12 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Gekko Reborn",
   description: "Advanced Crypto Trading Bot",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
 };
 
 export default async function LocaleLayout({
@@ -43,13 +48,7 @@ export default async function LocaleLayout({
           disableTransitionOnChange
         >
           <NextIntlClientProvider messages={messages}>
-            <div className="flex h-screen overflow-hidden bg-background text-foreground">
-              <Sidebar />
-              <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-                <Navbar />
-                <main className="w-full grow p-6">{children}</main>
-              </div>
-            </div>
+            <AppFrame>{children}</AppFrame>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

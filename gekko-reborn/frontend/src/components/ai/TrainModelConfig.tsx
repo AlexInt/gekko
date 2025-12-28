@@ -124,10 +124,7 @@ export default function TrainModelConfig({
             <label className="text-sm font-medium text-muted-foreground">
               {tCommon("symbol")}
             </label>
-            <Input
-              value={symbol}
-              onChange={(e) => setSymbol(e.target.value)}
-            />
+            <Input value={symbol} onChange={(e) => setSymbol(e.target.value)} />
           </div>
           <div className="space-y-2">
             <label className="text-sm font-medium text-muted-foreground">

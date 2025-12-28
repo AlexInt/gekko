@@ -19,14 +19,14 @@ export default function Home() {
       try {
         setLoading(true);
         setErrorMsg(null);
-        
+
         console.log("Fetching dashboard data...");
         console.log("API Base URL:", api.defaults.baseURL);
 
         // Fetch Portfolio
         const portfolioRes = await api.get<PortfolioItem[]>("/portfolio/");
         console.log("Portfolio response:", portfolioRes);
-        
+
         const items = portfolioRes.data;
         // Calculate total balance (mock calculation as backend returns raw list)
         // Assuming we can sum up 'total' * price, but we don't have price here.
@@ -81,13 +81,15 @@ export default function Home() {
         <div className="bg-destructive/10 border border-destructive/20 text-destructive p-4 rounded-lg mb-4">
           Error: {errorMsg}
           <br />
-          <span className="text-xs text-destructive/70">Check console for details. API URL: {api.defaults.baseURL}</span>
+          <span className="text-xs text-destructive/70">
+            Check console for details. API URL: {api.defaults.baseURL}
+          </span>
         </div>
       )}
 
       <PortfolioSummary portfolio={portfolio} loading={loading} />
 
-      <div className="grid gap-4 md:grid-cols-1 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
         <ActiveOrders orders={orders} loading={loading} />
       </div>
     </div>

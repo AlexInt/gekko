@@ -11,12 +11,16 @@ import {
   faBrain,
   faClockRotateLeft,
   faGear,
-  faDatabase,
   faRobot,
 } from "@fortawesome/free-solid-svg-icons";
 import { cn } from "@/lib/utils";
 
-const Sidebar = () => {
+type SidebarProps = {
+  className?: string;
+  onNavigate?: () => void;
+};
+
+const Sidebar = ({ className, onNavigate }: SidebarProps) => {
   const pathname = usePathname();
   const t = useTranslations("Sidebar");
   const locale = useLocale();
@@ -67,9 +71,18 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="space-y-4 py-4 flex flex-col h-full bg-sidebar border-r border-sidebar-border w-64 text-sidebar-foreground">
+    <div
+      className={cn(
+        "space-y-4 py-4 flex flex-col h-full bg-sidebar border-r border-sidebar-border w-64 text-sidebar-foreground",
+        className
+      )}
+    >
       <div className="px-3 py-2 flex-1">
-        <Link href={`/${locale}`} className="flex items-center pl-3 mb-14">
+        <Link
+          href={`/${locale}`}
+          onClick={onNavigate}
+          className="flex items-center pl-3 mb-14"
+        >
           <div className="relative w-8 h-8 mr-4">
             <div className="absolute inset-0 bg-primary blur-lg opacity-50 rounded-full"></div>
             <div className="relative w-full h-full bg-primary rounded-lg flex items-center justify-center font-bold text-lg text-primary-foreground">
@@ -83,6 +96,7 @@ const Sidebar = () => {
             <Link
               key={route.href}
               href={route.href}
+              onClick={onNavigate}
               className={cn(
                 "text-sm group flex p-3 w-full justify-start font-medium cursor-pointer rounded-xl transition-all duration-200",
                 pathname === route.href
