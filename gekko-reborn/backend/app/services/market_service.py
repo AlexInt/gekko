@@ -90,6 +90,19 @@ class MarketService:
         data = [c.to_dict() for c in candles]
         return pd.DataFrame(data)
 
+    async def get_latest_price(self, exchange: str, symbol: str) -> Optional[float]:
+        """Get latest close price from database"""
+        if not self.db:
+            return None
+            
+        stmt = select(Candle.close).where(
+            Candle.exchange == exchange,
+            Candle.symbol == symbol
+        ).order_by(Candle.timestamp.desc()).limit(1)
+        
+        result = await self.db.execute(stmt)
+        return result.scalar_one_or_none()
+
     async def fetch_ohlcv(
         self, 
         exchange_id: str, 

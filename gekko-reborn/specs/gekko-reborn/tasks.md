@@ -4,15 +4,15 @@
 
 ### Phase 1: 项目初始化 (Infrastructure)
 
-- [ ] 1.1 搭建 Monorepo 结构 (`frontend/` + `backend/` + `docker-compose.yml`)。
-- [ ] 1.2 初始化 FastAPI 后端 (Poetry, SQLAlchemy, Pydantic)。
-- [ ] 1.3 初始化 Next.js 前端 (TypeScript, Shadcn/UI, Axios)。
-- [ ] 1.4 配置 PostgreSQL (TimescaleDB) 和 Redis 容器。
+- [x] 1.1 搭建 Monorepo 结构 (`frontend/` + `backend/` + `docker-compose.yml`)。
+- [x] 1.2 初始化 FastAPI 后端 (Poetry, SQLAlchemy, Pydantic)。
+- [x] 1.3 初始化 Next.js 前端 (TypeScript, Shadcn/UI, Axios)。
+- [x] 1.4 配置 PostgreSQL (TimescaleDB) 和 Redis 容器。
 
 ### Phase 2: 市场数据模块 (Market Data)
 
-- [ ] 2.1 实现 `MarketService`，封装 `ccxt` 以支持多交易所。
-- [ ] 2.2 实现数据清洗与存储逻辑 (TimescaleDB Hypertable)。
+- [x] 2.1 实现 `MarketService`，封装 `ccxt` 以支持多交易所。
+- [x] 2.2 实现数据清洗与存储逻辑 (TimescaleDB Hypertable)。
 - [x] 2.3 配置 `APScheduler` 定时任务：每 15 分钟拉取最新 K 线。
 - [x] 2.4 编写测试：Mock 交易所 API，验证数据入库流程。
 
@@ -25,16 +25,16 @@
 
 ### Phase 4: AI 模块 (AI/ML)
 
-- [ ] 4.1 集成 PyTorch/Scikit-learn 环境。
-- [ ] 4.2 实现 `ModelTrainer`: 接收 K 线数据，训练 LSTM/XGBoost 模型。
-- [ ] 4.3 实现 `ModelPredictor`: 加载训练好的模型进行价格预测。
-- [ ] 4.4 开发一个基于 AI 预测的示例策略。
+- [x] 4.1 集成 PyTorch/Scikit-learn 环境。
+- [x] 4.2 实现 `ModelTrainer`: 接收 K 线数据，训练 LSTM/XGBoost 模型。
+- [x] 4.3 实现 `ModelPredictor`: 加载训练好的模型进行价格预测。
+- [x] 4.4 开发一个基于 AI 预测的示例策略。
 
 ### Phase 5: 实盘交易 (Live Trading)
 
-- [ ] 5.1 实现 `OrderManager`: 负责下单、撤单、查询订单状态。
-- [ ] 5.2 实现 `PortfolioManager`: 实时同步账户余额和持仓。
-- [ ] 5.3 实现 Paper Trading 模式（模拟撮合）。
+- [x] 5.1 实现 `OrderManager`: 负责下单、撤单、查询订单状态。
+- [x] 5.2 实现 `PortfolioManager`: 实时同步账户余额和持仓。
+- [x] 5.3 实现 Paper Trading 模式（模拟撮合）。
 - [ ] 5.4 完善日志系统，记录每一次信号和交易。
 
 ### Phase 6: Web 前端开发

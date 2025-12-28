@@ -14,6 +14,8 @@ from alembic import context
 from app.core.database import Base
 from app.models.candle import Candle
 from app.models.ai_model import AIModel
+from app.models.order import Order
+from app.models.portfolio import Balance
 
 # this is the Alembic Config object
 config = context.config

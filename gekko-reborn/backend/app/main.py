@@ -4,7 +4,7 @@ from contextlib import asynccontextmanager
 from app.core.database import engine
 from app.models.candle import Base
 from app.core.scheduler import start_scheduler, scheduler
-from app.routers import ai
+from app.routers import ai, orders, portfolio
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -51,3 +51,5 @@ async def health_check():
     return {"status": "ok"}
 
 app.include_router(ai.router)
+app.include_router(orders.router)
+app.include_router(portfolio.router)
