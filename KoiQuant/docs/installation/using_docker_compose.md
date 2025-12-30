@@ -21,7 +21,7 @@ docker compose up -d --build
 - db: `localhost:5432`（TimescaleDB/PostgreSQL）
 - redis: `localhost:6379`
 
-> 注意：`docker-compose.yml` 中包含 `worker` 服务，但当前代码仓库尚未提供可直接运行的 Celery 入口（属于预留项）。如果你只需要 MVP，可先注释/移除 worker。
+> 注意：`docker-compose.yml` 中包含 `worker` 服务，用于运行 Celery Worker（目前主要作为异步任务执行入口，具体任务会在后续逐步补齐）。
 
 ## 常用命令
 
@@ -41,4 +41,3 @@ docker compose 默认注入：
 - `NEXT_PUBLIC_API_URL`
 
 详见仓库根目录 [docker-compose.yml](../../docker-compose.yml)。
-
