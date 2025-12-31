@@ -9,7 +9,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=postgresql://postgres:password@db:5432/koiquant
+      - DATABASE_URL=postgresql+asyncpg://postgres:password@db:5432/koiquant
       - REDIS_URL=redis://redis:6379/0
     depends_on:
       - db
@@ -20,9 +20,8 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
+      args:
+        - NEXT_PUBLIC_API_URL=http://localhost:8000
     ports:
       - "3000:3000"
     environment:
@@ -55,7 +54,7 @@ services:
       dockerfile: Dockerfile
     command: celery -A app.worker worker --loglevel=info
     environment:
-      - DATABASE_URL=postgresql://postgres:password@db:5432/koiquant
+      - DATABASE_URL=postgresql+asyncpg://postgres:password@db:5432/koiquant
       - REDIS_URL=redis://redis:6379/0
     depends_on:
       - db

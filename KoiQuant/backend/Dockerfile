@@ -12,7 +12,25 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     build-essential \
     libpq-dev \
+    wget \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
+
+ARG TA_LIB_VERSION=0.4.0
+
+RUN set -eux; \
+    apt-get update; \
+    apt-get install -y --no-install-recommends gcc make; \
+    rm -rf /var/lib/apt/lists/*; \
+    mkdir -p /tmp/ta-lib; \
+    wget -qO /tmp/ta-lib/ta-lib.tar.gz "https://prdownloads.sourceforge.net/ta-lib/ta-lib-${TA_LIB_VERSION}-src.tar.gz"; \
+    tar -xzf /tmp/ta-lib/ta-lib.tar.gz -C /tmp/ta-lib; \
+    cd "/tmp/ta-lib/ta-lib"; \
+    ./configure --prefix=/usr --build="$(uname -m)-unknown-linux-gnu"; \
+    make -j1; \
+    make install; \
+    ldconfig; \
+    rm -rf /tmp/ta-lib
 
 # Install Poetry
 RUN pip install poetry
@@ -24,7 +42,7 @@ COPY pyproject.toml poetry.lock* /app/
 RUN poetry config virtualenvs.create false
 
 # Install dependencies
-RUN poetry install --no-interaction --no-ansi
+RUN poetry install --no-interaction --no-ansi --no-root
 
 # Copy project
 COPY . /app
